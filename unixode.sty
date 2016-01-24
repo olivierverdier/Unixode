@@ -6,12 +6,20 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{unixode}[2012/05/10]
 
+\RequirePackage{etoolbox}
+
 \RequirePackage{ifxetex}
+
+\newtoggle{noligatures}
+\togglefalse{noligatures}
+\DeclareOption{noligatures}{\toggletrue{noligatures}}
+
+\ProcessOptions\relax
 
 \ifxetex
 \RequirePackage{mathspec}
 \RequirePackage{fontspec}
-\defaultfontfeatures{Ligatures=TeX} 
+\iftoggle{noligatures}{}{\defaultfontfeatures{Ligatures=TeX}}
 \usepackage{newunicodechar}
 \newunicodechar{α}{\alpha}
 \newunicodechar{β}{\beta}
