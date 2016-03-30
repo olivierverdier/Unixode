@@ -17,6 +17,13 @@
 \ProcessOptions\relax
 
 \ifxetex
+    \let\continue=\relax
+\else
+    \usepackage[utf8]{inputenc}
+    \let\continue=\endinput
+\fi
+\continue
+
 \RequirePackage{mathspec}
 \RequirePackage{fontspec}
 \iftoggle{noligatures}{}{\defaultfontfeatures{Ligatures=TeX}}
@@ -153,7 +160,3 @@
 \newunicodechar{ⁿ}{^n}
 
 \newunicodechar{…}{\dots}
-\else
-\usepackage[utf8]{inputenc}
-\fi
-
